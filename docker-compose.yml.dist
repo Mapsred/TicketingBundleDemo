@@ -1,0 +1,54 @@
+version: "3.1"
+services:
+    mariadb:
+      image: mariadb:latest
+      container_name: annual_project-docker-mariadb
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=annual_project
+        - MYSQL_USER=annual_project
+        - MYSQL_PASSWORD=password
+      ports:
+        - "8157:3306"
+
+    webserver:
+      image: nginx:stable
+      container_name: annual_project-docker-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./engine/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "80:80"
+
+    php-fpm:
+      build: engine/php-fpm
+      container_name: annual_project-docker-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./engine/php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: annual_project-docker-phpmyadmin
+      links:
+        - mariadb:db
+      ports:
+        - "8257:80"
+      environment:
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: root
+
+    nodejs:
+      build: engine/nodejs
+      container_name: annual_project-docker-nodejs
+      working_dir: /application
+      volumes:
+        - .:/application
+      ports:
+        - "8357:3000"
+      tty: true
