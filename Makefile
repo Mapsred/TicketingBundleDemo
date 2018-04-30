@@ -21,7 +21,7 @@ kill:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
 install: ## Install and start the project
-install: .env build start assets db
+install: .env build start dump db
 
 reset: ## Stop and start a fresh install of the project
 reset: kill install
