@@ -1,7 +1,7 @@
 DOCKER_COMPOSE  = docker-compose
 
-EXEC_PHP        = $(DOCKER_COMPOSE) exec -T php-fpm /entrypoint
-EXEC_JS         = $(DOCKER_COMPOSE) exec -T nodejs /entrypoint
+EXEC_PHP        = $(DOCKER_COMPOSE) exec -T php-fpm
+EXEC_JS         = $(DOCKER_COMPOSE) exec -T nodejs
 
 SYMFONY         = $(EXEC_PHP) bin/console
 COMPOSER        = $(EXEC_PHP) composer
@@ -56,23 +56,25 @@ db: .env vendor
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration
 	$(SYMFONY) doctrine:fixtures:load --no-interaction --purge-with-truncate
 
-migration: ## Generate a new doctrine migration
-migration: vendor
-	$(SYMFONY) doctrine:migrations:diff
+migration: ## Create a migration
+	$(SYMFONY) make:migration
+
+migrate: ## Run the last migration
+	$(SYMFONY) doctrine:migrations:migrate
+
+full-migrate: migration migrate
 
 db-validate-schema: ## Validate the doctrine ORM mapping
 db-validate-schema: .env vendor
 	$(SYMFONY) doctrine:schema:validate
 
-assets: ## Run Webpack Encore to compile assets
-assets: node_modules
+dump: ## Run Webpack Encore to compile assets
 	$(YARN) run dev
 
 watch: ## Run Webpack Encore in watch mode
-watch: node_modules
 	$(YARN) run watch
 
-.PHONY: db migration assets watch
+.PHONY: db migration dump watch migration migrate full-migrate
 
 # rules based on files
 composer.lock: composer.json
