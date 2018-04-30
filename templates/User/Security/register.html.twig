@@ -1,0 +1,50 @@
+{% extends 'User/base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body_class %}register-page{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('homepage') }}"><b>Isolonice</b>Jarvis</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">HELP ME I'M STUCK</p>
+            {{ form_start(form) }}
+            <div class="form-group has-feedback">
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                {{ form_widget(form.plainPassword.children.first) }}
+                {{ form_errors(form.plainPassword.children.first) }}
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                {{ form_widget(form.plainPassword.children.second) }}
+                {{ form_errors(form.plainPassword.children.second) }}
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <span class="fa fa-lock"></span> S'inscrire
+                    </button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+            <a href="{{ path("security_login") }}" class="text-center">J'ai déja un compte</a>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+{% endblock %}

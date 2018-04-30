@@ -1,30 +1,33 @@
 framework:
     secret: '%env(APP_SECRET)%'
-    #default_locale: en
-    #csrf_protection: true
-    #http_method_override: true
-
-    # Enables session support. Note that the session will ONLY be started if you read or write from it.
-    # Remove or comment this section to explicitly disable session support.
+    csrf_protection: { enabled: true }
+    http_method_override: true
+    trusted_hosts: ~
+    # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
     session:
-        handler_id: ~
-
-    #esi: true
-    #fragments: true
+        name: 'project_session_id'
+#        cookie_domain: '%domain%'
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    # When using the HTTP Cache, ESI allows to render page fragments separately
+    # and with different cache configurations for each fragment
+    # https://symfony.com/doc/current/book/http_cache.html#edge-side-includes
+    esi: { enabled: true }
+    fragments: { enabled: true }
     php_errors:
         log: true
-
+    assets:
+        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
     cache:
-        # Put the unique name of your app here: the prefix seed
-        # is used to compute stable namespaces for cache keys.
-        #prefix_seed: your_vendor_name/app_name
-
-        # The app cache caches to the filesystem by default.
-        # Other options include:
-
-        # Redis
-        #app: cache.adapter.redis
-        #default_redis_provider: redis://localhost
-
-        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
-        #app: cache.adapter.apcu
+        # this value is used as part of the "namespace" generated for the cache item keys
+        # to avoid collisions when multiple apps share the same cache backend (e.g. a Redis server)
+        # See https://symfony.com/doc/current/reference/configuration/framework.html#prefix-seed
+        prefix_seed: project
+    # The 'ide' option turns all of the file paths in an exception page
+    # into clickable links that open the given file using your favorite IDE.
+    # When 'ide' is set to null the file is opened in your web browser.
+    # See https://symfony.com/doc/current/reference/configuration/framework.html#ide
+    ide: ~
+    validation: { enable_annotations: true }
+    templating:
+        engines: ['twig']

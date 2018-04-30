@@ -1,0 +1,5 @@
+parameters:
+  locale: 'fr'
+#  domain: '%env(DOMAIN)%'
+  secret: '%env(APP_SECRET)%'
+

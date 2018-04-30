@@ -1,24 +1,51 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    always_authenticate_before_granting: true
+    encoders:
+        App\Entity\User: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
     providers:
-        in_memory: { memory: ~ }
+        database_users:
+            entity: { class: App\Entity\User, property: email }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+            provider: database_users
+            user_checker: App\Security\UserChecker
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout_on_user_change: true
+            switch_user: ~
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+#                domain: '%domain%'
+                always_remember_me: true
+            logout:
+                path: /logout
+                invalidate_session: true
 
             # activate different ways to authenticate
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
