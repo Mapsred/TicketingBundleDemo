@@ -1,0 +1,8 @@
+ticketing:
+    entities:
+        ticket:               'App\Entity\Ticket'
+        ticket_category:      'App\Entity\TicketCategory'
+        ticket_comment:       'App\Entity\TicketComment'
+        ticket_history:       'App\Entity\TicketHistory'
+        ticket_keyword:       'App\Entity\Ticket\Keyword'
+        ticket_status:        'App\Entity\TicketStatus'

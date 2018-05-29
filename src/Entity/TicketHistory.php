@@ -13,7 +13,7 @@ use Maps_red\TicketingBundle\Entity\TicketHistory as BaseTicketHistory;
 
 /**
  * @ORM\Table(name="ticket_tickets_history")
- * @ORM\Entity(repositoryClass="Maps_red\TicketingBundle\Repository\TicketHistoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TicketHistoryRepository")
  */
 class TicketHistory extends BaseTicketHistory
 {

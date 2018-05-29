@@ -13,7 +13,7 @@ use Maps_red\TicketingBundle\Entity\TicketComment as BaseTicketComment;
 
 /**
  * @ORM\Table(name="ticket_tickets_comment")
- * @ORM\Entity(repositoryClass="Maps_red\TicketingBundle\Repository\TicketCommentRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TicketCommentRepository")
  */
 class TicketComment extends BaseTicketComment
 {

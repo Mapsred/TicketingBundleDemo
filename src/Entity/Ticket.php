@@ -13,7 +13,7 @@ use Maps_red\TicketingBundle\Entity\Ticket as BaseTicket;
 
 /**
  * @ORM\Table(name="ticket_tickets")
- * @ORM\Entity(repositoryClass="Maps_red\TicketingBundle\Repository\TicketRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TicketRepository")
  */
 class Ticket extends BaseTicket
 {

@@ -13,7 +13,7 @@ use Maps_red\TicketingBundle\Entity\TicketKeyword as BaseTicketKeyword;
 
 /**
  * @ORM\Table(name="ticket_tickets_keyword")
- * @ORM\Entity(repositoryClass="Maps_red\TicketingBundle\Repository\TicketKeywordRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TicketKeywordRepository")
  */
 class TicketKeyword extends BaseTicketKeyword
 {

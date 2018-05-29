@@ -13,7 +13,7 @@ use Maps_red\TicketingBundle\Entity\TicketStatus as BaseTicketStatus;
 
 /**
  * @ORM\Table(name="ticket_tickets_status")
- * @ORM\Entity(repositoryClass="Maps_red\TicketingBundle\Repository\TicketStatusRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TicketStatusRepository")
  */
 class TicketStatus extends BaseTicketStatus
 {
