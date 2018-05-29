@@ -28,3 +28,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+        resolve_target_entities:
+            Maps_red\TicketingBundle\Model\TicketInterface: App\Entity\Ticket
+            Maps_red\TicketingBundle\Model\TicketCategoryInterface: App\Entity\TicketCategory
+            Maps_red\TicketingBundle\Model\TicketCommentInterface: App\Entity\TicketComment
+            Maps_red\TicketingBundle\Model\TicketHistoryInterface: App\Entity\TicketHistory
+            Maps_red\TicketingBundle\Model\TicketKeywordInterface: App\Entity\TicketKeyword
+            Maps_red\TicketingBundle\Model\TicketStatusInterface: App\Entity\TicketStatus
+            Maps_red\TicketingBundle\Model\UserInterface: App\Entity\User

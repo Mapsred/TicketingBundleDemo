@@ -3,7 +3,7 @@ DOCKER_COMPOSE  = docker-compose
 EXEC_PHP        = $(DOCKER_COMPOSE) exec -T php-fpm
 EXEC_JS         = $(DOCKER_COMPOSE) exec -T nodejs
 
-SYMFONY         = $(EXEC_PHP) bin/console
+SYMFONY         = $(EXEC_PHP) php bin/console
 COMPOSER        = $(EXEC_PHP) composer
 YARN            = $(EXEC_JS) yarn
 
@@ -61,7 +61,10 @@ migration: ## Create a migration
 migrate: ## Run the last migration
 	$(SYMFONY) doctrine:migrations:migrate
 
-full-migrate: migration migrate
+schema-update:
+	$(SYMFONY) doctrine:schema:update --force
+
+full-migrate: migration migrate schema-update
 
 db-validate-schema: ## Validate the doctrine ORM mapping
 db-validate-schema: .env vendor
