@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Form\LoginForm;
 use App\Form\UserRegistrationForm;
 use App\Security\LoginFormAuthenticator;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class SecurityController extends Controller
 {
@@ -46,9 +47,10 @@ class SecurityController extends Controller
     /**
      * @Route("/register", name="user_register")
      * @param Request $request
+     * @param GuardAuthenticatorHandler $guardAuthenticatorHandler
      * @return Response
      */
-    public function registerAction(Request $request)
+    public function registerAction(Request $request, GuardAuthenticatorHandler $guardAuthenticatorHandler)
     {
         $user = new User();
         $form = $this->createForm(UserRegistrationForm::class, $user);
@@ -60,7 +62,7 @@ class SecurityController extends Controller
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Bienvenue ' . $user->getUsername());
 
-            return $this->get('security.authentication.guard_handler')
+            return $guardAuthenticatorHandler
                 ->authenticateUserAndHandleSuccess($user, $request, $this->get(LoginFormAuthenticator::class), 'main');
         }
 
