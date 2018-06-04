@@ -48,9 +48,10 @@ class SecurityController extends Controller
      * @Route("/register", name="user_register")
      * @param Request $request
      * @param GuardAuthenticatorHandler $guardAuthenticatorHandler
+     * @param LoginFormAuthenticator $loginFormAuthenticator
      * @return Response
      */
-    public function registerAction(Request $request, GuardAuthenticatorHandler $guardAuthenticatorHandler)
+    public function registerAction(Request $request, GuardAuthenticatorHandler $guardAuthenticatorHandler, LoginFormAuthenticator $loginFormAuthenticator)
     {
         $user = new User();
         $form = $this->createForm(UserRegistrationForm::class, $user);
@@ -63,7 +64,7 @@ class SecurityController extends Controller
             $this->addFlash('success', 'Bienvenue ' . $user->getUsername());
 
             return $guardAuthenticatorHandler
-                ->authenticateUserAndHandleSuccess($user, $request, $this->get(LoginFormAuthenticator::class), 'main');
+                ->authenticateUserAndHandleSuccess($user, $request, $loginFormAuthenticator, 'main');
         }
 
         return $this->render('User/Security/register.html.twig', [
