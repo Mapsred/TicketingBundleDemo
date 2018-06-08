@@ -41,6 +41,11 @@ no-docker:
 	$(eval EXEC_PHP := )
 	$(eval EXEC_JS := )
 
+bundle-translation:
+	$(SYMFONY) translation:update --dump-messages --force en TicketingBundle --output-format=xlf && \
+	$(SYMFONY) translation:update --dump-messages --force fr TicketingBundle --output-format=xlf
+
+
 .PHONY: build kill install reset start stop clean no-docker
 
 ##
