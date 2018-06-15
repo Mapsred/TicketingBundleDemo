@@ -17,4 +17,5 @@ use Maps_red\TicketingBundle\Entity\Ticket as BaseTicket;
  */
 class Ticket extends BaseTicket
 {
+    
 }
