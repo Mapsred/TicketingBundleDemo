@@ -4,3 +4,6 @@
 
 ticketing_routing:
   resource: '@TicketingBundle/Resources/config/routing/routes.yaml'
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
