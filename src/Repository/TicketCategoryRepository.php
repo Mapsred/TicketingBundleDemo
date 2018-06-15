@@ -12,7 +12,7 @@ use Maps_red\TicketingBundle\Repository\TicketCategoryRepository as BaseTicketRe
  * @method TicketCategory[]    findAll()
  * @method TicketCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TicketRepository extends BaseTicketRepository
+class TicketCategoryRepository extends BaseTicketRepository
 {
     public function __construct(RegistryInterface $registry)
     {
