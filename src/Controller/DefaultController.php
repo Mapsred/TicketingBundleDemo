@@ -15,14 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
-     */
-    public function homepage()
-    {
-        return $this->render('base.html.twig');
-    }
-
-    /**
      * @Route("/form", name="form_page")
      * @param Request $request
      * @return RedirectResponse|Response

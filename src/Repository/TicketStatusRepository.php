@@ -2,9 +2,9 @@
 
 namespace App\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\Entity\TicketStatus;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Maps_red\TicketingBundle\Repository\TicketStatusRepository as BaseTicketRepository;
 
 /**
  * @method TicketStatus|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method TicketStatus[]    findAll()
  * @method TicketStatus[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TicketStatusRepository extends ServiceEntityRepository
+class TicketStatusRepository extends BaseTicketRepository
 {
     public function __construct(RegistryInterface $registry)
     {
