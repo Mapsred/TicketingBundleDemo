@@ -17,23 +17,4 @@ use Maps_red\TicketingBundle\Entity\Ticket as BaseTicket;
  */
 class Ticket extends BaseTicket
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
 }
