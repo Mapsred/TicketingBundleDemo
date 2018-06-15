@@ -45,8 +45,10 @@ bundle-translation:
 	$(SYMFONY) translation:update --dump-messages --force en TicketingBundle --output-format=xlf && \
 	$(SYMFONY) translation:update --dump-messages --force fr TicketingBundle --output-format=xlf
 
+assets:
+	$(SYMFONY) assets:install --symlink
 
-.PHONY: build kill install reset start stop clean no-docker
+.PHONY: build kill install reset start stop clean no-docker assets
 
 ##
 ## Utils
