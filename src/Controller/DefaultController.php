@@ -14,14 +14,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    
+
     /**
      * @Route("/", name="default_page")
      */
     public function defaultAction()
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('ticket_perso');
+            return $this->redirectToRoute('ticketing_perso');
         }
 
         return $this->render('base.html.twig');
