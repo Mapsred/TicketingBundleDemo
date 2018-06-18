@@ -16,7 +16,7 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/login", name="security_login")
+     * @Route("/", name="security_login")
      */
     public function loginAction()
     {

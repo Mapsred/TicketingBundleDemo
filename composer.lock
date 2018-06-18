@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "74af3ef0b56a4443dec6177c10c978f3",
@@ -1264,15 +1264,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mapsred/TicketingBundle.git",
-                "reference": "fc496c29f7f2f0503a3ce24f076c362ca2245f25"
+                "reference": "f484bff48f65c15398375c8ca8aeef3de81cd636"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mapsred/TicketingBundle/zipball/fc496c29f7f2f0503a3ce24f076c362ca2245f25",
-                "reference": "fc496c29f7f2f0503a3ce24f076c362ca2245f25",
+                "url": "https://api.github.com/repos/Mapsred/TicketingBundle/zipball/f484bff48f65c15398375c8ca8aeef3de81cd636",
+                "reference": "f484bff48f65c15398375c8ca8aeef3de81cd636",
                 "shasum": ""
             },
             "require": {
+                "friendsofsymfony/jsrouting-bundle": "^2.2",
                 "knplabs/doctrine-behaviors": "^1.5",
                 "php": ">=7.1.0",
                 "sensio/framework-extra-bundle": "^5.1",
@@ -1298,7 +1299,7 @@
             "license": [
                 "proprietary"
             ],
-            "time": "2018-06-14T22:09:48+00:00"
+            "time": "2018-06-15T16:46:49+00:00"
         },
         {
             "name": "monolog/monolog",
