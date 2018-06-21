@@ -12,19 +12,16 @@ YARN            = $(EXEC_JS) yarn
 ## -------
 ##
 
-build:
-	@$(DOCKER_COMPOSE) pull --parallel --quiet --ignore-pull-failures 2> /dev/null
-	$(DOCKER_COMPOSE) build --pull
-
-kill:
-	$(DOCKER_COMPOSE) kill
-	$(DOCKER_COMPOSE) down --volumes --remove-orphans
+no-docker:
+	$(eval DOCKER_COMPOSE := \#)
+	$(eval EXEC_PHP := )
+	$(eval EXEC_JS := )
 
 install: ## Install and start the project
-install: .env build start dump db
+install: .env docker-compose build vendor assets db
 
-reset: ## Stop and start a fresh install of the project
-reset: kill install
+build:
+	$(DOCKER_COMPOSE) up -d --build
 
 start: ## Start the project
 	$(DOCKER_COMPOSE) up -d --remove-orphans --no-recreate
@@ -32,23 +29,10 @@ start: ## Start the project
 stop: ## Stop the project
 	$(DOCKER_COMPOSE) stop
 
-clean: ## Stop the project and remove generated files
-clean: kill
-	rm -rf .env vendor node_modules
-
-no-docker:
-	$(eval DOCKER_COMPOSE := \#)
-	$(eval EXEC_PHP := )
-	$(eval EXEC_JS := )
-
-bundle-translation:
-	$(SYMFONY) translation:update --dump-messages --force en TicketingBundle --output-format=xlf && \
-	$(SYMFONY) translation:update --dump-messages --force fr TicketingBundle --output-format=xlf
-
 assets:
 	$(SYMFONY) assets:install --symlink
 
-.PHONY: build kill install reset start stop clean no-docker assets
+.PHONY: no-docker install start stop assets
 
 ##
 ## Utils
@@ -57,7 +41,6 @@ assets:
 
 db: ## Reset the database and load fixtures
 db: .env vendor
-	$(SYMFONY) doctrine:database:drop --if-exists --force && \
 	$(SYMFONY) doctrine:database:create --if-not-exists && \
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration && \
 	$(SYMFONY) doctrine:fixtures:load --no-interaction --purge-with-truncate
@@ -71,19 +54,8 @@ migrate: ## Run the last migration
 schema-update:
 	$(SYMFONY) doctrine:schema:update --force
 
-full-migrate: migration migrate schema-update
 
-db-validate-schema: ## Validate the doctrine ORM mapping
-db-validate-schema: .env vendor
-	$(SYMFONY) doctrine:schema:validate
-
-dump: ## Run Webpack Encore to compile assets
-	$(YARN) run dev
-
-watch: ## Run Webpack Encore in watch mode
-	$(YARN) run watch
-
-.PHONY: db migration dump watch migration migrate full-migrate
+.PHONY: db migration dump migration migrate
 
 # rules based on files
 composer.lock: composer.json
@@ -92,12 +64,8 @@ composer.lock: composer.json
 vendor: composer.lock
 	$(COMPOSER) install
 
-node_modules: yarn.lock
-	$(YARN) install
-	@touch -c node_modules
-
-yarn.lock: package.json
-	$(YARN) upgrade
+docker-compose: docker-compose.yml.dist
+	cp docker-compose.yml.dist docker-compose.yml
 
 .env: .env.dist
 	@if [ -f .env ]; \
