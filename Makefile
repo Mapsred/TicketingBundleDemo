@@ -42,7 +42,7 @@ assets:
 db: ## Reset the database and load fixtures
 db: .env vendor
 	$(SYMFONY) doctrine:database:create --if-not-exists && \
-	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration && \
+	$(SYMFONY) doctrine:schema:update --force && \
 	$(SYMFONY) doctrine:fixtures:load --no-interaction --purge-with-truncate
 
 migration: ## Create a migration
@@ -64,7 +64,7 @@ composer.lock: composer.json
 vendor: composer.lock
 	$(COMPOSER) install
 
-docker-compose: docker-compose.yml.dist
+docker-compose:
 	cp docker-compose.yml.dist docker-compose.yml
 
 .env: .env.dist
