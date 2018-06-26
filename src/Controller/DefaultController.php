@@ -14,9 +14,9 @@ class DefaultController extends Controller
      */
     public function defaultAction()
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('ticketing_perso');
-        }
+//        if ($this->getUser()) {
+//            return $this->redirectToRoute('ticketing_perso');
+//        }
 
         return $this->render('Default/homepage.html.twig');
     }

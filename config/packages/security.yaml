@@ -24,7 +24,6 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-            logout_on_user_change: true
             switch_user: ~
             remember_me:
                 secret:   '%secret%'
