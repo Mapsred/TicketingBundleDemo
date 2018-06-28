@@ -32,6 +32,10 @@ stop: ## Stop the project
 assets:
 	$(SYMFONY) assets:install --symlink
 
+bundle-translation:
+	$(SYMFONY) translation:update --dump-messages --force en TicketingBundle --output-format=xlf && \
+	$(SYMFONY) translation:update --dump-messages --force fr TicketingBundle --output-format=xlf
+
 .PHONY: no-docker install start stop assets
 
 ##
