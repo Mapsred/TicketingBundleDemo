@@ -9,24 +9,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class UserFixtures extends Fixture
 {
-
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setUsername('John');
-
-        $password = "JohnPassword";
-        $user->setPlainPassword($password);
-
-        $user->setEmail("John123@gmail.com");
-
-        $roles[] = 'ROLE_USER';
-        $user->setRoles($roles);
-
-        $user->setRegisterDate($this->date = new \DateTime());
-
-        $user->setEnabled(1);
-
+        $user->setUsername('John')->setEmail("John123@gmail.com")->setRoles(array('ROLE_USER'))->setRegisterDate(new \DateTime())->setEnabled(1)->setPlainPassword("JohnPassword");
         $manager->persist($user);
         $manager->flush();
     }

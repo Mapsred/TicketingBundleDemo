@@ -10,7 +10,6 @@ class TicketStatusFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-
         $statusFixture = [
             "open" => [
                 "value" => "Ouvert",

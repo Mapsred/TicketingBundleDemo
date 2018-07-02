@@ -10,7 +10,6 @@ class TicketPriorityFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-
         $statusFixture = [
             "open" => [
                 "name" => "low",
