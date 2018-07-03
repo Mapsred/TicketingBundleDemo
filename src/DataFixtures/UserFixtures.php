@@ -12,7 +12,11 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setUsername('John')->setEmail("John123@gmail.com")->setRoles(array('ROLE_USER'))->setRegisterDate(new \DateTime())->setEnabled(1)->setPlainPassword("JohnPassword");
+        $user
+            ->setUsername('John')
+            ->setEmail("John123@gmail.com")
+            ->setRegisterDate(new \DateTime())
+            ->setPlainPassword("JohnPassword");
         $manager->persist($user);
         $manager->flush();
     }
