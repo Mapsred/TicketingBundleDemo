@@ -1,16 +1,25 @@
 {% extends "@Ticketing/base.html.twig" %}
 
-{% block navbar %}
-    {% if app.user %}
-        <li>
-            <a href="{{ path('security_logout') }}">Se déconnecter</a>
-        </li>
-    {% else %}
-        <li>
-            <a href="{{ path('security_login') }}">Se connecter</a>
-        </li>
-        <li>
-            <a href="{{ path('user_register') }}">S'inscrire</a>
-        </li>
-    {% endif %}
+{% block body %}
+    <div class="jumbotron" style="background-color: white;">
+        <h2 class="display-3">{{ 'hello.world'|trans({}, 'homepage') }}</h2>
+        <p class="lead">{{ 'hello.explain'|trans({}, 'homepage') }}</p>
+        <p>{{ 'hello.explain.more'|trans({}, 'homepage') }}</p>
+        <p>
+            <ul>
+                <li> {{ 'ticket.category'|trans({}, 'homepage') }} </li>
+                <li> {{ 'ticket.status'|trans({}, 'homepage') }} </li>
+                <li> {{ 'ticket.comment'|trans({}, 'homepage') }} </li>
+                <li> {{ 'ticket.reference'|trans({}, 'homepage') }} </li>
+                <li> {{ 'ticket.history'|trans({}, 'homepage') }} </li>
+            </ul>
+        </p>
+        <hr class="my-4">
+        <p>{{ 'hello.firstTry'|trans({}, 'homepage') }}</p>
+        <hr class="my-4">
+        <p>{{ 'hello.curious'|trans({}, 'homepage') }}</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://github.com/Mapsred/TicketingBundle" role="button">{{ 'hello.thegit'|trans({}, 'homepage') }}</a>
+        </p>
+    </div>
 {% endblock %}

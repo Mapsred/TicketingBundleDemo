@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -16,10 +16,6 @@
       <trans-unit id="ugwhXgU" resname="label.confirm_password">
         <source>label.confirm_password</source>
         <target>Confirmer le mot de passe</target>
-      </trans-unit>
-      <trans-unit id="9pvowqn" resname="label.password">
-        <source>label.password</source>
-        <target>Mot de passe</target>
       </trans-unit>
     </body>
   </file>

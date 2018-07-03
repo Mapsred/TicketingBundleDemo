@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="yw2DVZ9" resname="hello.world">
+        <source>hello.world</source>
+        <target>Bienvenue sur la Démo de Ticketing Bundle !</target>
+      </trans-unit>
+      <trans-unit id="VrDyQeA" resname="hello.explain">
+        <source>hello.explain</source>
+        <target>Cette Démo vous permet de découvrir à quoi sert le Ticketing Bundle</target>
+      </trans-unit>
+      <trans-unit id="CunsZVw" resname="hello.explain.more">
+        <source>hello.explain.more</source>
+        <target>Pour rappel notre Bundle vous permet d'installer facilement une logique de Ticketing incluant :</target>
+      </trans-unit>
+      <trans-unit id=".yDsJhV" resname="ticket.category">
+        <source>ticket.category</source>
+        <target>Un système de catégorie.</target>
+      </trans-unit>
+      <trans-unit id="Smirnvc" resname="ticket.status">
+        <source>ticket.status</source>
+        <target>Un système de statut.</target>
+      </trans-unit>
+      <trans-unit id="ULyCMTF" resname="ticket.comment">
+        <source>ticket.comment</source>
+        <target>Un système de priorité.</target>
+      </trans-unit>
+      <trans-unit id="fDHNIcZ" resname="ticket.reference">
+        <source>ticket.reference</source>
+        <target>Une possibilité de joindre des tickets entre-eux.</target>
+      </trans-unit>
+      <trans-unit id="iB7EKvm" resname="ticket.history">
+        <source>ticket.history</source>
+        <target>Un suivi de l'historique de vos tickets.</target>
+      </trans-unit>
+      <trans-unit id="uE4JHOf" resname="hello.firstTry">
+        <source>hello.firstTry</source>
+        <target>Vous pouvez vous inscrire ou utiliser comme identifiant "John" avec comme mot de passe "JohnPassword" </target>
+      </trans-unit>
+      <trans-unit id="nazXeqx" resname="hello.curious">
+        <source>hello.curious</source>
+        <target>Vous souhaitez utiliser ce Bundle ou vous êtes tout simplement curieux?</target>
+      </trans-unit>
+      <trans-unit id="xWqUJvj" resname="hello.thegit">
+        <source>hello.thegit</source>
+        <target>Rendez-vous sur le GitHub</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
