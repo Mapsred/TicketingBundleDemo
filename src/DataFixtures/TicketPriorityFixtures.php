@@ -2,35 +2,35 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\TicketStatus;
+use App\Entity\TicketPriority;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class TicketStatusFixtures extends Fixture
+class TicketPriorityFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         $statusFixture = [
             "open" => [
-                "value" => "Ouvert",
-                "style" => "success",
+                "name" => "low",
+                "value" => "low",
             ],
             "pending" => [
-                "value" => "En cours",
-                "style" => "warning",
+                "name" => "medium",
+                "value" => "medium",
             ],
             "closed" => [
-                "value" => "Clos",
-                "style" => "danger",
+                "name" => "high",
+                "value" => "high",
             ],
             "waiting" => [
-                "value" => "En attente",
-                "style" => "info",
+                "name" => "critical",
+                "value" => "critical",
             ],
         ];
         foreach ($statusFixture as $name => $value) {
-            $status = new TicketStatus();
-            $status->setName($name)->setValue($value['value'])->setStyle($value['style']);
+            $status = new TicketPriority();
+            $status->setName($name)->setValue($value['value']);
             $manager->persist($status);
         }
         $manager->flush();
