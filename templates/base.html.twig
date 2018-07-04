@@ -1,6 +1,6 @@
 {% extends "@Ticketing/base.html.twig" %}
 
-{% block navbar %}
+{% block right_navbar %}
     {% if app.user %}
         <li>
             <a href="{{ path('security_logout') }}">Se déconnecter</a>

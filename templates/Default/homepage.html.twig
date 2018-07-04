@@ -1,1 +1,27 @@
 {% extends "base.html.twig" %}
+
+{% block title %}Accueil {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron bg-white">
+        <h2>{{ 'hello.world'|trans({}, 'homepage') }}</h2>
+        <p class="lead">{{ 'hello.explain'|trans({}, 'homepage') }}</p>
+        <p>{{ 'hello.explain.more'|trans({}, 'homepage') }}</p>
+        <ul>
+            <li>{{ 'ticket.category'|trans({}, 'homepage') }}</li>
+            <li>{{ 'ticket.status'|trans({}, 'homepage') }}</li>
+            <li>{{ 'ticket.comment'|trans({}, 'homepage') }}</li>
+            <li>{{ 'ticket.reference'|trans({}, 'homepage') }}</li>
+            <li>{{ 'ticket.history'|trans({}, 'homepage') }}</li>
+        </ul>
+        <hr>
+        <p>{{ 'hello.firstTry'|trans({}, 'homepage') }}</p>
+        <hr>
+        <p>{{ 'hello.curious'|trans({}, 'homepage') }}</p>
+        <p class="lead">
+            <a target="_blank" class="btn btn-primary btn-lg" href="https://github.com/Mapsred/TicketingBundle" role="button">
+                {{ 'hello.thegit'|trans({}, 'homepage') }}
+            </a>
+        </p>
+    </div>
+{% endblock %}
