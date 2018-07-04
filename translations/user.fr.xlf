@@ -17,6 +17,10 @@
         <source>label.confirm_password</source>
         <target>Confirmer le mot de passe</target>
       </trans-unit>
+      <trans-unit id="9pvowqn" resname="label.password">
+        <source>label.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
