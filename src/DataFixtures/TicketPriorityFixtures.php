@@ -11,28 +11,30 @@ class TicketPriorityFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $statusFixture = [
-            "open" => [
+            "low" => [
                 "name" => "low",
-                "value" => "low",
+                "value" => "Basse",
             ],
-            "pending" => [
+            "medium" => [
                 "name" => "medium",
-                "value" => "medium",
+                "value" => "Moyenne",
             ],
-            "closed" => [
+            "high" => [
                 "name" => "high",
-                "value" => "high",
+                "value" => "Haute",
             ],
-            "waiting" => [
+            "critical" => [
                 "name" => "critical",
-                "value" => "critical",
+                "value" => "Critique",
             ],
         ];
+
         foreach ($statusFixture as $name => $value) {
             $status = new TicketPriority();
             $status->setName($name)->setValue($value['value']);
             $manager->persist($status);
         }
+
         $manager->flush();
     }
 }
