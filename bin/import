@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Maps_red
+ * Date: 06/02/2017
+ * Time: 19:06
+ */
+
+$pwd = basename(getcwd());
+
+$empty = true;
+
+
+$commands = [
+    "--pull" => "git pull",
+    "--force" => "php bin/console doctrine:schema:update --force",
+    "--clear-cache" => "php bin/console cache:clear",
+    "--composer" => "composer install",
+    "--copy-datepicker-source" => "cp web/assets/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css.map web/compiled/css/bootstrap-datepicker3.css.map"
+];
+
+$commands["--full"] = $commands;
+
+
+$commands['--full-prod'] = array_merge($commands["--prod"], $commands["--full"]);
+
+unset($argv[0]);
+
+foreach ($argv as $flag) {
+    if (in_array($flag, array_keys($commands))) {
+        $empty = false;
+        execute($commands[$flag]);
+    }
+}
+
+function execute($command)
+{
+    if (is_array($command)) {
+        foreach ($command as $cmd) {
+            execute($cmd);
+        }
+    } else {
+        echo shell_exec($command);
+    }
+
+}
+
+if ($empty) {
+    echo "List of flags : ".implode(", ", array_keys($commands));
+}
