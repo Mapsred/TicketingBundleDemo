@@ -4,6 +4,8 @@
 
 This project is a demo of the [**TicketingBundle**](https://github.com/Mapsred/TicketingBundle).
 
+You can try this [**Awesome project**](http://ticketing-bundle-demo.mindgame.ovh/) on our server.
+
 In this project you can explore and test a website made with this bundle :
 
  - Create a new ticket
@@ -11,7 +13,6 @@ In this project you can explore and test a website made with this bundle :
  - A page with every tickets of the current user
  - A page with every tickets created on the server
 
-At the end, this project will be the showcase of the [**TicketingBundle**](https://github.com/Mapsred/TicketingBundle).
 
 ## Installation
 
