@@ -6,7 +6,6 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-
 class UserFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
@@ -17,6 +16,7 @@ class UserFixtures extends Fixture
             ->setEmail("John123@gmail.com")
             ->setRegisterDate(new \DateTime())
             ->setPlainPassword("JohnPassword");
+
         $manager->persist($user);
         $manager->flush();
     }

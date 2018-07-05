@@ -10,29 +10,35 @@ class TicketCategoryFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $statusFixture = [
-            "open" => [
-                "name" => "Question",
+        $categoryFixture = [
+            "question" => [
+                "name" => "question",
+                "value" => "Question",
                 "position" => "1",
             ],
-            "pending" => [
-                "name" => "Problem",
+            "problem" => [
+                "name" => "problem",
+                "value" => "Problème",
                 "position" => "2",
             ],
-            "closed" => [
-                "name" => "Bug",
+            "bug" => [
+                "name" => "bug",
+                "value" => "Bug",
                 "position" => "3",
             ],
-            "waiting" => [
-                "name" => "Suggestion",
+            "suggestion" => [
+                "name" => "suggestion",
+                "value" => "Suggestion",
                 "position" => "4",
             ],
         ];
-        foreach ($statusFixture as $name => $value) {
+
+        foreach ($categoryFixture as $name => $value) {
             $status = new TicketCategory();
-            $status->setName($name)->setPosition($value['position']);
+            $status->setName($name)->setValue($value['value'])->setPosition($value['position']);
             $manager->persist($status);
         }
+
         $manager->flush();
     }
 }

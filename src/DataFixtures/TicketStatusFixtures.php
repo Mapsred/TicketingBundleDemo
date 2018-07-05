@@ -28,11 +28,13 @@ class TicketStatusFixtures extends Fixture
                 "style" => "info",
             ],
         ];
+
         foreach ($statusFixture as $name => $value) {
             $status = new TicketStatus();
             $status->setName($name)->setValue($value['value'])->setStyle($value['style']);
             $manager->persist($status);
         }
+
         $manager->flush();
     }
 }
